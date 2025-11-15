@@ -24,13 +24,13 @@ jobs:
       uses: Mattraks/delete-workflow-runs@v2
       with:
         retain_days: 0
-        keep_minimum_runs: 2
+        keep_minimum_runs: 1
 
     - name: Remove old Releases
       if: ${{ env.CLEAN_RELEASE }} == true
       uses: ophub/delete-releases-workflows@main
       with:
         delete_releases: true
-        releases_keep_latest: 4
+        releases_keep_latest: 1
         delete_tags: true
         gh_token: ${{ secrets.GITHUB_TOKEN }}
