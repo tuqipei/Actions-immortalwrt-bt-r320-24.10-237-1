@@ -5,6 +5,18 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
+# 2. 清理冲突包 & 官方坑包
+# =========================================================
+# 双重保险：移除 feeds 里的 golang (配合 diy-part1.sh 使用)
+rm -rf feeds/packages/lang/golang
+
+# 移除 Ruby, Docker 等
+rm -rf feeds/packages/lang/ruby
+rm -rf feeds/packages/utils/docker
+rm -rf feeds/packages/utils/dockerd
+rm -rf feeds/packages/utils/containerd
+rm -rf feeds/packages/utils/runc
+rm -rf feeds/packages/utils/tini
 
 # =========================================================
 # 3. 克隆/替换第三方插件
