@@ -142,10 +142,8 @@ fi
 # 如果你之前用 25.x 成功了，就保留 25.x
 
 # =========================================================
-# 2. 清理可能有问题的官方包 (Ruby, Docker 等)
+# 2. 清理可能有问题的官方包 ( Docker 等)
 # =========================================================
-# 移除 Ruby 以防止编码报错 (Invalid byte sequence)
-rm -rf feeds/packages/lang/ruby
 
 # 移除 Docker 源码 (防止编译失败，建议后续通过 opkg 安装)
 rm -rf feeds/packages/utils/docker
