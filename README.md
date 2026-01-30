@@ -54,38 +54,26 @@
 
 #### 修改配置文件
 
-1. 修改`.config`文件（固件编译配置）：
-   - 可以直接编辑现有`.config`文件
+1. 修改`bt-r320.config`文件（固件编译配置）：
+   - 可以直接编辑现有`bt-r320.config`文件
    - 或者上传您自己生成的配置文件
 
 2. 修改自定义脚本：
    - `diy-part1.sh`：更新feeds之前的自定义操作（添加软件源等）
-   - `diy-part2.sh`：更新feeds之后的自定义操作（修改默认设置、主题等）
+   - `bt-r320.sh`：更新feeds之后的自定义操作（修改默认设置、主题等）
 
 #### 开始编译
 
 1. 进入仓库的`Actions`页面
-2. 选择`Build OpenWrt` workflow
-3. 点击`Run workflow`按钮，选择好配置
-   - `编译方式`：选择编译环境
-      - `Host`：在本地环境编译
-      - `Docker`：在Docker容器中编译，已集成依赖和固件源码
-   - LAN IP：设置路由器LAN口IP地址
-   - 默认主题：选择默认的Web管理界面主题
-   - 主机名：设置路由器的主机名
-   - WIFI名称：设置路由器的WIFI名称，可分别设置2.4G和5G的WIFI名称
-   - 5G高功率25db：是否启用WIFI5G高功率25db
-   - SSH：是否通过SSH连接到Actions
-   - 缓存加速编译：是否启用缓存加速编译
-   - 清理编译：是否在编译前清理旧的编译文件
-4. 点击`Run workflow`开始编译过程
-5. 编译过程通常需要1-3小时，取决于配置的复杂度，启用缓存加速编译在首次编译成功后，下次编译对编译速度会有很大的提升。
+2. 选择`Build bt-r320 Immortalwrt 24.10-6.6` workflow
+3. 点击`Run workflow`开始编译过程
+4. 编译过程通常需要1-3小时，取决于配置的复杂度，启用缓存加速编译在首次编译成功后，下次编译对编译速度会有很大的提升。
 
 #### 下载固件
 
-1. 编译完成后，在Actions页面找到已完成的Workflow运行
-2. 点击进入详情页面
-3. 在页面底部的`Artifacts`部分下载编译好的固件
+编译完成后，在Releases页面找到最新日期的固件，如：
+20260130-24.10-6.6-immortalwrt-mediatek-filogic-bt_r320-emmc-squashfs-sysupgrade.bin
+
 
 ## 自定义配置说明
 
@@ -98,7 +86,7 @@
   add_feed "istore" "https://github.com/linkease/istore.git;main"
   add_feed "nas_luci" "https://github.com/linkease/nas-packages-luci.git;main"
   ```
-- `diy-part2.sh`：更新golang包
+- `bt-r320.sh`：更新golang包
   ```bash
   # 示例：更新golang包
   rm -rf feeds/packages/lang/golang
@@ -106,11 +94,11 @@
   git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
   ```
 
-### 自定义.config文件
+### 自定义bt-r320.config文件
 
 如果您想完全自定义固件配置，可以：
 
-1. 基于现有`.config`文件修改
+1. 基于现有`bt-r320.config`文件修改
 2. 使用`make menuconfig`交互式配置（本地环境）
 3. 从[padavanonly/immortalwrt-mt798x-6.6](https://github.com/padavanonly/immortalwrt-mt798x-6.6)获取默认配置
 
